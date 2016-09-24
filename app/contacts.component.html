@@ -11,8 +11,8 @@
   </header>
   <input #newContact class="add-contact" placeholder="Add Contact" (keyup.enter)="addContact(newContact.value); newContact.value=''">
   <ul class="contact-list">
-    <li *ngFor="#contact of contacts">
-      <contact [contact]="contact" (onRemoveContact)="removeContact($event)" (onStarContact)="starContact($event)"></contact>
+    <li *ngFor="let contact of contacts">
+      <cl-contact [contact]="contact"></cl-contact>
     </li>
   </ul>
 </div>

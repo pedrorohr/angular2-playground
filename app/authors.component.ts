@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core'
+import {Component} from '@angular/core'
 import {AuthorsService} from './authors.service'
 
 @Component({
@@ -7,7 +7,7 @@ import {AuthorsService} from './authors.service'
     <h2>Authors</h2>
     {{ title }}
     <ul>
-      <li *ngFor="#author of authors">
+      <li *ngFor="let author of authors">
         {{ author }}
       </li>
     </ul>

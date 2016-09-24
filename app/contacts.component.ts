@@ -1,39 +1,24 @@
-import {Component} from 'angular2/core'
-import {ContactsService} from './contacts.service'
-import {ContactComponent} from './contact.component'
+import { Component, OnInit } from '@angular/core';
+
+import {ContactService} from './contact.service'
 import {Contact} from './contact.model'
 
 @Component({
-  selector: 'contacts',
+  selector: 'cl-contact-list',
   templateUrl: 'app/contacts.component.html',
-  styleUrls: ['app/contacts.component.css'],
-  providers: [ContactsService],
-  directives: [ContactComponent]
+  styleUrls: ['app/contacts.component.css']
 })
 
-export class ContactsComponent {
-  contacts: Contact[] = [];
+export class ContactsComponent implements OnInit {
+  private contacts: Contact[] = [];
 
-  constructor(contactsService: ContactsService) {
-    this.contacts = contactsService.getContacts();
-  }
+  constructor(private contactService: ContactService) {}
 
   addContact(newContact: string) {
-    this.contacts.push({
-      id: 4,
-      name: newContact,
-      star: false
-    });
+    this.contactService.addContact(newContact);
   }
 
-  removeContact(contact: Contact) {
-    const index = this.contacts.indexOf(contact);
-    this.contacts.splice(index, 1);
+  ngOnInit() {
+    this.contacts = this.contactService.getContacts();
   }
-
-  starContact(contact: Contact) {
-    const index = this.contacts.indexOf(contact);
-    this.contacts[index].star = !this.contacts[index].star;
-  }
-
 }

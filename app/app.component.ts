@@ -1,15 +1,16 @@
-import {Component} from 'angular2/core'
-import {CoursesComponent} from './courses.component'
-import {AuthorsComponent} from './authors.component'
-import {ContactsComponent} from './contacts.component'
+import { Component } from '@angular/core';
+
+import {ContactService} from './contact.service'
 
 @Component({
     selector: 'my-app',
     template: `
       <courses></courses>
       <authors></authors>
-      <contacts></contacts>
+      <cl-contact-list></cl-contact-list>
+      <contact-form></contact-form>
     `,
-    directives: [CoursesComponent, AuthorsComponent, ContactsComponent]
+    providers: [ContactService]
 })
+
 export class AppComponent { }
